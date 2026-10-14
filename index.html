@@ -317,7 +317,7 @@ grid.addEventListener("click",function(e){var h=e.target.closest("[data-h]");
  if(h){var k=h.dataset.h;fav[k]=!fav[k];h.classList.toggle("on",!!fav[k]);h.setAttribute("aria-pressed",!!fav[k]);return}
  var c=e.target.closest("[data-id]");if(c)openStay(c.dataset.id)});
 /* CMS and packages. Add your Sanity projectId below to load live content. */
-var SANITY={projectId:"",dataset:"production",apiVersion:"2025-01-01"};
+var SANITY={projectId:"b0991shp",dataset:"production",apiVersion:"2025-01-01"};
 var Q_STAYS='*[_type=="stay"]|order(order asc){"id":_id,"n":name,"l":location,"r":region,"p":price,"g":maxGuests,"d":description,"img":image.asset->url}';
 var Q_PKGS='*[_type=="package"]|order(order asc){"id":_id,"n":name,"tag":tagline,"nights":nights,"price":price,"g":guests,"feat":featured,"inc":includes,"d":description,"stay":stay._ref}';
 /* Sample packages shown until Sanity is connected. */
