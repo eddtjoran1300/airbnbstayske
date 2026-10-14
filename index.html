@@ -411,7 +411,7 @@ $("f").addEventListener("submit",function(e){e.preventDefault();
   else{go(3);$("pay").disabled=false;err.textContent=(r&&r.error)||"Payment was not completed. Check your number and try again."}})
  .catch(function(){go(3);$("pay").disabled=false;err.textContent="We could not reach Mpesa. Try again in a moment."})});
 /* WhatsApp and PDF receipt */
-var WA_BUSINESS="254700000000"; /* replace with your WhatsApp number in international format */
+var WA_BUSINESS="254722711903"; /* replace with your WhatsApp number in international format */
 $("wa").href="https://wa.me/"+WA_BUSINESS+"?text="+encodeURIComponent("Hello Airbnb Stays Kenya, I would like help with a booking.");
 function msg(){return "Airbnb Stays Kenya receipt "+last.code+". "+last.stay.n+", "+dfmt(last.cin)+" to "+dfmt(last.cout)+" ("+last.nts+(last.nts===1?" night":" nights")+"). Paid KES "+fmt(last.total)+" via Mpesa. Thank you for booking with us."}
 function buildPdf(){
