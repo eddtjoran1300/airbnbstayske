@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Airbnb Stays Kenya</title>
-<meta name="description" content="Discover stays across Kenya that fit you instantly.">
+<meta name="description" content="Discover stays across Kenya that fit you instantly. Book and pay with Mpesa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -268,7 +268,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
       <label class="f">Mpesa phone number<input id="ph" inputmode="tel" autocomplete="tel" placeholder="0712 345 678" required></label>
       <div class="err" id="err" role="alert"></div>
       <button class="btn mp" id="pay" type="submit">Pay with Mpesa</button>
-      <p class="note">Demo mode: no money is charged until a payment backend is connected.</p>
+      <p class="note">You will get an Mpesa prompt on this number. Enter your PIN to confirm.</p>
     </form>
   </div></div>
 
@@ -317,7 +317,7 @@ grid.addEventListener("click",function(e){var h=e.target.closest("[data-h]");
  if(h){var k=h.dataset.h;fav[k]=!fav[k];h.classList.toggle("on",!!fav[k]);h.setAttribute("aria-pressed",!!fav[k]);return}
  var c=e.target.closest("[data-id]");if(c)openStay(c.dataset.id)});
 /* CMS and packages. Add your Sanity projectId below to load live content. */
-var SANITY={projectId:"b0991shp",dataset:"production",apiVersion:"2025-01-01"};
+var SANITY={projectId:"",dataset:"production",apiVersion:"2025-01-01"};
 var Q_STAYS='*[_type=="stay"]|order(order asc){"id":_id,"n":name,"l":location,"r":region,"p":price,"g":maxGuests,"d":description,"img":image.asset->url}';
 var Q_PKGS='*[_type=="package"]|order(order asc){"id":_id,"n":name,"tag":tagline,"nights":nights,"price":price,"g":guests,"feat":featured,"inc":includes,"d":description,"stay":stay._ref}';
 /* Sample packages shown until Sanity is connected. */
@@ -381,11 +381,21 @@ function normalize(v){v=v.replace(/[\s+]/g,"");
  if(/^0[17]\d{8}$/.test(v))return"254"+v.slice(1);
  if(/^254[17]\d{8}$/.test(v))return v;
  if(/^[17]\d{8}$/.test(v))return"254"+v;return null}
-/* Set PAYMENT_ENDPOINT to your server route that triggers a Daraja STK push. */
-var PAYMENT_ENDPOINT="";
+/* Real payments call /api/pay then poll /api/status. Add ?demo to the address to try the fake flow. */
+var DEMO_MODE=/[?&]demo\b/.test(location.search);
+function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
 function startPayment(body){
- if(PAYMENT_ENDPOINT){return fetch(PAYMENT_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){return r.json()})}
- return new Promise(function(res){setTimeout(function(){res({ok:true,receipt:"S"+Math.random().toString(36).slice(2,11).toUpperCase()})},4200)})}
+ if(DEMO_MODE)return sleep(4200).then(function(){return{ok:true,receipt:"S"+Math.random().toString(36).slice(2,11).toUpperCase()}});
+ return fetch("/api/pay",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})
+ .then(function(r){return r.json()}).then(function(j){
+  if(!j.ref)return{ok:false,error:j.error||"We could not start the payment. Please try again."};
+  var t0=Date.now();
+  function poll(){return sleep(3000).then(function(){return fetch("/api/status?ref="+encodeURIComponent(j.ref)).then(function(r){return r.json()})}).then(function(s){
+   if(s.status==="paid")return{ok:true,receipt:s.receipt};
+   if(s.status==="failed")return{ok:false,error:s.reason||"The payment was not completed."};
+   if(Date.now()-t0>110000)return{ok:false,error:"We did not receive a confirmation. If money was deducted, contact us on WhatsApp with your phone number."};
+   return poll()})}
+  return poll()})}
 $("f").addEventListener("submit",function(e){e.preventDefault();
  var m=normalize($("ph").value),err=$("err");
  if(!$("nm").value.trim()){err.textContent="Enter your full name.";return}
@@ -398,12 +408,12 @@ $("f").addEventListener("submit",function(e){e.preventDefault();
    $("okmsg").textContent=stay.n+" for "+nts+(nts===1?" night":" nights")+". Mpesa receipt:";$("rc").textContent=r.receipt;
    $("wsend").href="https://wa.me/"+m+"?text="+encodeURIComponent(msg());
    $("wnote").textContent="On supported phones the PDF attaches to WhatsApp automatically. Otherwise download it and attach it in the chat.";go(5)}
-  else{go(3);$("pay").disabled=false;err.textContent="Payment was not completed. Check your number and try again."}})
+  else{go(3);$("pay").disabled=false;err.textContent=(r&&r.error)||"Payment was not completed. Check your number and try again."}})
  .catch(function(){go(3);$("pay").disabled=false;err.textContent="We could not reach Mpesa. Try again in a moment."})});
 /* WhatsApp and PDF receipt */
-var WA_BUSINESS="254722711903"; /* replace with your WhatsApp number in international format */
-$("wa").href="https://wa.me/"+WA_BUSINESS+"?text="+encodeURIComponent("Hello Airbnbstays Kenya, I would like help with a booking.");
-function msg(){return "Airbnbstays Kenya receipt "+last.code+". "+last.stay.n+", "+dfmt(last.cin)+" to "+dfmt(last.cout)+" ("+last.nts+(last.nts===1?" night":" nights")+"). Paid KES "+fmt(last.total)+" via Mpesa. Thank you for booking with us."}
+var WA_BUSINESS="254700000000"; /* replace with your WhatsApp number in international format */
+$("wa").href="https://wa.me/"+WA_BUSINESS+"?text="+encodeURIComponent("Hello Airbnb Stays Kenya, I would like help with a booking.");
+function msg(){return "Airbnb Stays Kenya receipt "+last.code+". "+last.stay.n+", "+dfmt(last.cin)+" to "+dfmt(last.cout)+" ("+last.nts+(last.nts===1?" night":" nights")+"). Paid KES "+fmt(last.total)+" via Mpesa. Thank you for booking with us."}
 function buildPdf(){
  var J=window.jspdf&&window.jspdf.jsPDF;if(!J||!last)return null;
  var d=new J({unit:"mm",format:"a5"}),W=148;
@@ -417,7 +427,7 @@ function buildPdf(){
  d.setTextColor(16,23,42);d.setFontSize(11);d.text("Amount paid",18,y+13);d.setFontSize(16);d.text("KES "+fmt(last.total),W-18,y+14,{align:"right"});
  d.setFont("helvetica","normal");d.setFontSize(9);d.setTextColor(100,112,136);
  d.text("Thank you for booking with us. Follow @airbnbstays.ke on Instagram.",W/2,y+31,{align:"center"});
- if(!PAYMENT_ENDPOINT)d.text("Demo receipt. No payment was taken.",W/2,y+37,{align:"center"});
+ if(DEMO_MODE)d.text("Demo receipt. No payment was taken.",W/2,y+37,{align:"center"});
  return d}
 $("dl").onclick=function(){
  var d=buildPdf(),n=$("wnote");if(!d)return;
