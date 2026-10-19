@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Airbnb Stays Kenya</title>
+<title>Airbnbstays Kenya</title>
 <meta name="description" content="Discover stays across Kenya that fit you instantly. Book and pay with Mpesa.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -291,7 +291,7 @@ var STAYS=[
 {id:4,n:"Mt Kenya View Loft",l:"Nanyuki, Laikipia",r:"Highlands",p:8200,g:3,t:"hills",c:["#B8D8F5","#FFD9A0","#4A6A8A"],d:"A airy loft with a wall of windows facing Mt Kenya. Crisp mornings, a cosy fireplace and nearby conservancies make it a favourite for weekend escapes."},
 {id:5,n:"Nyali Ocean Apartment",l:"Nyali, Mombasa",r:"Coast",p:7400,g:4,t:"sea",c:["#86D0DE","#FFD08A","#16627A"],d:"A modern apartment with a sea view balcony, secure parking and a pool on site. Beaches, malls and the best coastal food are all close by."},
 {id:6,n:"Kilimani City Studio",l:"Kilimani, Nairobi",r:"Nairobi",p:4800,g:2,t:"city",c:["#F2B88A","#FFE0B0","#31465A"],d:"A smart studio in the heart of Kilimani with a comfortable work desk, a rooftop view and cafes on your doorstep. Perfect for short business trips."}];
-var $=function(i){return document.getElementById(i)},fmt=function(n){return n.toLocaleString("en-KE")};
+var $=function(i){return document.getElementById(i)},fmt=function(n){return Number(n||0).toLocaleString("en-KE")};
 var IC={pin:'<svg class="ic" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>',heart:'<svg class="ic" viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.3 3 5 6.3 5c2 0 3.6 1 5.7 3.2C14.1 6 15.7 5 17.7 5 21 5 23.1 8.3 21.6 11.8 19.5 16.4 12 21 12 21z"/></svg>'};
 function scene(s,v){v=v||0;if(s.img)return'<img src="'+s.img+'?w=800&auto=format" alt="'+s.n+'" loading="lazy">';var a=s.c,b="",sx=310-v*95,sy=70+v*14;
  if(s.t==="sea")b='<rect y="190" width="400" height="110" fill="'+a[2]+'"/><path d="M0 215q50-14 100 0t100 0t100 0t100 0" stroke="#fff" stroke-opacity=".5" fill="none" stroke-width="3"/><path d="M0 245q50-14 100 0t100 0t100 0t100 0" stroke="#fff" stroke-opacity=".3" fill="none" stroke-width="3"/><rect x="'+(250-v*60)+'" y="140" width="90" height="52" fill="#fff"/><path d="M'+(240-v*60)+' 140l55-34 55 34z" fill="#C46A3A"/>';
@@ -337,9 +337,9 @@ $("pk").addEventListener("click",function(e){var b=e.target.closest("[data-p]");
 function gq(q){return fetch("https://"+SANITY.projectId+".apicdn.sanity.io/v"+SANITY.apiVersion+"/data/query/"+SANITY.dataset+"?query="+encodeURIComponent(q)).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){return j.result||[]})}
 function loadCMS(){if(!SANITY.projectId)return;
  Promise.all([gq(Q_STAYS),gq(Q_PKGS)]).then(function(a){
-  if(a[0].length)STAYS=a[0].map(function(s){s.c=["#8FD3C7","#F6D58C","#2E6F5E"];s.t="hills";s.g=s.g||2;s.d=s.d||"";return s});
+  if(a[0].length)STAYS=a[0].map(function(s){s.c=["#8FD3C7","#F6D58C","#2E6F5E"];s.t="hills";s.g=s.g||2;s.d=s.d||"";s.n=s.n||"Untitled stay";s.l=s.l||"";s.p=s.p||0;return s});
   if(a[1].length)PACKAGES=a[1].map(function(p){p.inc=p.inc||[];p.g=p.g||2;return p});
-  render();renderPk()}).catch(function(){})}
+  render();renderPk()}).catch(function(e){console.warn("Sanity load failed",e)})}
 renderPk();loadCMS();
 /* booking flow */
 var dlg=$("dlg"),stay,cin="",cout="",gs=2,tm="12:00 PM",vm,today,nts=0,total=0,step=1,last=null;
