@@ -184,6 +184,13 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
 .pkf{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap;padding-top:.8rem;border-top:1px solid var(--gl)}
 .pkf b{font-size:1.25rem}
 .pkf .btn{width:auto;padding:.75rem 1.3rem}
+.thumbs{display:flex;gap:.5rem;overflow-x:auto;padding-bottom:.3rem;scrollbar-width:thin}
+.thumbs div{flex:0 0 23%}
+.thumbs .th{flex:0 0 23%;aspect-ratio:1;border:0;padding:0;border-radius:16px;overflow:hidden;cursor:pointer;opacity:.65;transition:opacity .2s}
+.thumbs .th:hover{opacity:1}.thumbs .th.on{opacity:1;outline:3px solid var(--blue);outline-offset:-3px}
+.thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.dm{position:absolute;inset:0}.dhero img{width:100%;height:100%;object-fit:cover;display:block;animation:imgin .4s both}
+@keyframes imgin{from{opacity:0}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero h1 .ln span{transform:none}.hero p.sub,.search{opacity:1}}
 </style>
 </head>
@@ -193,7 +200,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
   <header class="hero">
     <div>
       <h1><span class="ln"><span>Discover stays</span></span><span class="ln"><span>that fit you</span></span><span class="ln"><span>instantly.</span></span></h1>
-      <p class="sub">Handpicked homes from the coast to the highlands. Pick your dates and pay with Mpesa.</p>
+      <p class="sub">Handpicked homes in Nairobi Kenya Pick your dates and enjoy your stay.</p>
       <div class="search"><label class="gl"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search by stay or place" aria-label="Search stays"></label><button class="go" id="go" aria-label="View stays"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button></div>
     </div>
     <div class="stack" id="stack" aria-hidden="true"></div>
@@ -225,7 +232,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
       <a class="btn blue" href="https://www.instagram.com/airbnbstays.ke" target="_blank" rel="noopener">Visit @airbnbstays.ke</a>
     </section>
   </main>
-  <footer><div class="wrap" style="width:100%"><span>Airbnb Stays Kenya</span><span>Payments by Mpesa. Prices in KES.</span></div></footer>
+  <footer><div class="wrap" style="width:100%"><span>Airbnbstays Kenya</span><span></span></div></footer>
 </div>
 
 <a class="wa" id="wa" href="#" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -318,7 +325,7 @@ grid.addEventListener("click",function(e){var h=e.target.closest("[data-h]");
  var c=e.target.closest("[data-id]");if(c)openStay(c.dataset.id)});
 /* CMS and packages. Add your Sanity projectId below to load live content. */
 var SANITY={projectId:"b0991shp",dataset:"production",apiVersion:"2025-01-01"};
-var Q_STAYS='*[_type=="stay"]|order(order asc){"id":_id,"n":name,"l":location,"r":region,"p":price,"g":maxGuests,"d":description,"img":image.asset->url}';
+var Q_STAYS='*[_type=="stay"]|order(order asc){"id":_id,"n":name,"l":location,"r":region,"p":price,"g":maxGuests,"d":description,"img":image.asset->url,"gallery":gallery[].asset->url}';
 var Q_PKGS='*[_type=="package"]|order(order asc){"id":_id,"n":name,"tag":tagline,"nights":nights,"price":price,"g":guests,"feat":featured,"inc":includes,"d":description,"stay":stay._ref}';
 /* Sample packages shown until Sanity is connected. */
 var PACKAGES=[
@@ -337,7 +344,7 @@ $("pk").addEventListener("click",function(e){var b=e.target.closest("[data-p]");
 function gq(q){return fetch("https://"+SANITY.projectId+".apicdn.sanity.io/v"+SANITY.apiVersion+"/data/query/"+SANITY.dataset+"?query="+encodeURIComponent(q)).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){return j.result||[]})}
 function loadCMS(){if(!SANITY.projectId)return;
  Promise.all([gq(Q_STAYS),gq(Q_PKGS)]).then(function(a){
-  if(a[0].length)STAYS=a[0].map(function(s){s.c=["#8FD3C7","#F6D58C","#2E6F5E"];s.t="hills";s.g=s.g||2;s.d=s.d||"";s.n=s.n||"Untitled stay";s.l=s.l||"";s.p=s.p||0;return s});
+  if(a[0].length)STAYS=a[0].map(function(s){s.c=["#8FD3C7","#F6D58C","#2E6F5E"];s.t="hills";s.g=s.g||2;s.d=s.d||"";s.n=s.n||"Untitled stay";s.l=s.l||"";s.p=s.p||0;s.img=s.img||(s.gallery&&s.gallery[0])||null;s.imgs=[s.img].concat(s.gallery||[]).filter(function(u,i,a){return u&&a.indexOf(u)===i});return s});
   if(a[1].length)PACKAGES=a[1].map(function(p){p.inc=p.inc||[];p.g=p.g||2;return p});
   render();renderPk()}).catch(function(e){console.warn("Sanity load failed",e)})}
 renderPk();loadCMS();
@@ -349,8 +356,8 @@ function go(n){step=n;for(var i=1;i<=5;i++)$("v"+i).classList.toggle("on",i===n)
 function pills(el,arr,sel,fn){el.innerHTML="";arr.forEach(function(v){var b=document.createElement("button");b.type="button";b.textContent=v;b.setAttribute("aria-pressed",String(v)===String(sel));b.onclick=function(){fn(v);pills(el,arr,v,fn)};el.appendChild(b)})}
 function openStay(id,p){pk=p||null;stay=STAYS.filter(function(s){return String(s.id)===String(id)})[0];cin=cout="";gs=Math.min(2,pk?pk.g:stay.g);tm="12:00 PM";
  var t=new Date();today=key(t.getFullYear(),t.getMonth(),t.getDate());vm=new Date(t.getFullYear(),t.getMonth(),1);
- $("dhero").innerHTML=scene(stay,0)+'<div class="tx"><div class="loc">'+IC.pin+stay.l+'</div><h2>'+(pk?pk.n:stay.n)+'</h2><div class="pp"><span>'+(pk?'Package price':'Price per night')+'</span><b>KES '+fmt(pk?pk.price:stay.p)+'</b></div></div>';
- $("thumbs").innerHTML=[1,2,3].map(function(v){return'<div>'+scene(stay,v)+'</div>'}).join("")+'<div>'+scene(stay,4)+'<span class="more">12 more</span></div>';
+ $("dhero").innerHTML='<div class="dm" id="dm">'+scene(stay,0)+'</div><div class="tx"><div class="loc">'+IC.pin+stay.l+'</div><h2>'+(pk?pk.n:stay.n)+'</h2><div class="pp"><span>'+(pk?'Package price':'Price per night')+'</span><b>KES '+fmt(pk?pk.price:stay.p)+'</b></div></div>';
+ var im=stay.imgs||[];$("thumbs").innerHTML=im.length?(im.length>1?im.map(function(u,i){return'<button type="button" class="th'+(i?'':' on')+'" data-u="'+esc(u)+'" aria-label="Photo '+(i+1)+' of '+im.length+'"><img src="'+esc(u)+'?w=300&auto=format" alt="" loading="lazy"></button>'}).join(""):""):[1,2,3,4].map(function(v){return'<div>'+scene(stay,v)+'</div>'}).join("");
  if(pk)stay=Object.assign({},stay,{n:pk.n+" at "+stay.n});$("desc").textContent=pk?(pk.d||"")+" Includes: "+pk.inc.join(", ")+".":stay.d;$("desc").classList.add("cl");$("rm").textContent="Read more";$("rm").hidden=false;
  $("rate").textContent=pk?"Package, "+pk.nights+(pk.nights===1?" night":" nights"):"KES "+fmt(stay.p)+" a night";
  var gl=[],mg=pk?pk.g:stay.g;for(var i=1;i<=mg;i++)gl.push(i);
@@ -370,6 +377,9 @@ $("days").addEventListener("click",function(e){var b=e.target.closest("button[da
  if(pk){cin=k;var z=new Date(k);z.setUTCDate(z.getUTCDate()+pk.nights);cout=z.toISOString().slice(0,10)}else if(!cin||cout||k<=cin){cin=k;cout=""}else cout=k;upd()});
 $("pm").onclick=function(){vm=new Date(vm.getFullYear(),vm.getMonth()-1,1);upd()};
 $("mn").onclick=function(){vm=new Date(vm.getFullYear(),vm.getMonth()+1,1);upd()};
+$("thumbs").addEventListener("click",function(e){var b=e.target.closest("button[data-u]");if(!b)return;
+ [].forEach.call($("thumbs").children,function(x){x.classList.remove("on")});b.classList.add("on");
+ $("dm").innerHTML='<img src="'+b.dataset.u+'?w=1000&auto=format" alt="">'});
 $("next1").onclick=function(){go(2)};
 $("next2").onclick=function(){
  $("psum").innerHTML='<div class="r"><span>Stay</span><b>'+stay.n+'</b></div><div class="r"><span>Dates</span><span>'+dfmt(cin)+' to '+dfmt(cout)+'</span></div><div class="r"><span>Check in time</span><span>'+tm+'</span></div><div class="r"><span>Guests</span><span>'+gs+'</span></div><div class="r tt"><span>Total</span><span>KES '+fmt(total)+'</span></div>';go(3)};
