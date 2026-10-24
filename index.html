@@ -189,8 +189,10 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
 .thumbs .th{flex:0 0 23%;aspect-ratio:1;border:0;padding:0;border-radius:16px;overflow:hidden;cursor:pointer;opacity:.65;transition:opacity .2s}
 .thumbs .th:hover{opacity:1}.thumbs .th.on{opacity:1;outline:3px solid var(--blue);outline-offset:-3px}
 .thumbs img{width:100%;height:100%;object-fit:cover;display:block}
+.stack img{width:100%;height:100%;object-fit:cover;display:block}
 .dm{position:absolute;inset:0}.dhero img{width:100%;height:100%;object-fit:cover;display:block;animation:imgin .4s both}
 @keyframes imgin{from{opacity:0}}
+#stays{padding-top:1.5rem}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero h1 .ln span{transform:none}.hero p.sub,.search{opacity:1}}
 </style>
 </head>
@@ -200,7 +202,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
   <header class="hero">
     <div>
       <h1><span class="ln"><span>Discover stays</span></span><span class="ln"><span>that fit you</span></span><span class="ln"><span>instantly.</span></span></h1>
-      <p class="sub">Handpicked homes in Nairobi Kenya Pick your dates and enjoy your stay.</p>
+      <p class="sub">Handpicked homes from the coast to the highlands. Pick your dates and pay with Mpesa.</p>
       <div class="search"><label class="gl"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search by stay or place" aria-label="Search stays"></label><button class="go" id="go" aria-label="View stays"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button></div>
     </div>
     <div class="stack" id="stack" aria-hidden="true"></div>
@@ -208,7 +210,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
 
   <main>
     <div id="stays">
-      <div class="chips" id="chips" role="group" aria-label="Filter by region"></div>
+      
       <div class="grid" id="grid"></div>
     </div>
     <section id="packages">
@@ -232,7 +234,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
       <a class="btn blue" href="https://www.instagram.com/airbnbstays.ke" target="_blank" rel="noopener">Visit @airbnbstays.ke</a>
     </section>
   </main>
-  <footer><div class="wrap" style="width:100%"><span>Airbnbstays Kenya</span><span></span></div></footer>
+  <footer><div class="wrap" style="width:100%"><span>Airbnb Stays Kenya</span><span>Payments by Mpesa. Prices in KES.</span></div></footer>
 </div>
 
 <a class="wa" id="wa" href="#" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -306,17 +308,17 @@ function scene(s,v){v=v||0;if(s.img)return'<img src="'+s.img+'?w=800&auto=format
  else b='<path d="M0 200q90-90 190-20t210-30v150H0z" fill="'+a[2]+'" opacity=".8"/><path d="M0 250q120-70 220-10t180-20v80H0z" fill="#1E4435"/><path d="M'+(270-v*70)+' 205l35-40 35 40z" fill="#fff"/><rect x="'+(278-v*70)+'" y="205" width="54" height="30" fill="#C46A3A"/>';
  var id="g"+s.id+"_"+v;
  return '<svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of '+s.n+'"><defs><linearGradient id="'+id+'" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="'+a[v%2?1:0]+'"/><stop offset="1" stop-color="'+(v%2?a[0]:"#fff")+'"/></linearGradient></defs><rect width="400" height="300" fill="url(#'+id+')"/><circle cx="'+sx+'" cy="'+sy+'" r="34" fill="'+a[1]+'"/>'+b+'</svg>'}
-$("stack").innerHTML='<div>'+scene(STAYS[1],0)+'</div><div>'+scene(STAYS[0],1)+'</div>';
+function renderStack(){var a=STAYS.filter(function(s){return s.img}),pick=a.concat(STAYS.filter(function(s){return a.indexOf(s)<0}));
+ $("stack").innerHTML='<div>'+scene(pick[1]||pick[0],0)+'</div><div>'+scene(pick[0],1)+'</div>'}
+renderStack();
 /* listing grid */
-var grid=$("grid"),chips=$("chips"),cur="All",fav={};
+var grid=$("grid"),cur="All",fav={};
 function render(){var q=$("q").value.trim().toLowerCase();grid.innerHTML="";
  var list=STAYS.filter(function(s){return(cur==="All"||s.r===cur)&&(!q||(s.n+" "+s.l).toLowerCase().indexOf(q)>-1)});
  if(!list.length){grid.innerHTML='<div class="empty gl" style="border-radius:24px">No stays match your search. Try another place or clear the filter.</div>';return}
  list.forEach(function(s,i){var c=document.createElement("div");c.style.position="relative";c.style.animation="pop .6s "+i*80+"ms both";
   c.innerHTML='<button class="card" style="animation:none;width:100%" data-id="'+s.id+'" aria-label="View '+s.n+'">'+scene(s,0)+'<div class="info"><span class="badge">Recommended</span><h3>'+s.n+'</h3><div class="loc">'+IC.pin+s.l+'</div><div class="pr">KES '+fmt(s.p)+' a night</div></div></button><button class="heart'+(fav[s.id]?" on":"")+'" data-h="'+s.id+'" aria-label="Save '+s.n+'" aria-pressed="'+!!fav[s.id]+'">'+IC.heart+'</button>';
   grid.appendChild(c)})}
-["All","Nairobi","Coast","Highlands"].forEach(function(r){var b=document.createElement("button");b.className="chip";b.textContent=r;b.setAttribute("aria-pressed",r==="All");
- b.onclick=function(){cur=r;[].forEach.call(chips.children,function(x){x.setAttribute("aria-pressed",x===b)});render()};chips.appendChild(b)});
 $("q").addEventListener("input",render);
 $("go").onclick=function(){$("stays").scrollIntoView({behavior:"smooth"})};
 render();
@@ -346,7 +348,7 @@ function loadCMS(){if(!SANITY.projectId)return;
  Promise.all([gq(Q_STAYS),gq(Q_PKGS)]).then(function(a){
   if(a[0].length)STAYS=a[0].map(function(s){s.c=["#8FD3C7","#F6D58C","#2E6F5E"];s.t="hills";s.g=s.g||2;s.d=s.d||"";s.n=s.n||"Untitled stay";s.l=s.l||"";s.p=s.p||0;s.img=s.img||(s.gallery&&s.gallery[0])||null;s.imgs=[s.img].concat(s.gallery||[]).filter(function(u,i,a){return u&&a.indexOf(u)===i});return s});
   if(a[1].length)PACKAGES=a[1].map(function(p){p.inc=p.inc||[];p.g=p.g||2;return p});
-  render();renderPk()}).catch(function(e){console.warn("Sanity load failed",e)})}
+  render();renderPk();renderStack()}).catch(function(e){console.warn("Sanity load failed",e)})}
 renderPk();loadCMS();
 /* booking flow */
 var dlg=$("dlg"),stay,cin="",cout="",gs=2,tm="12:00 PM",vm,today,nts=0,total=0,step=1,last=null;
