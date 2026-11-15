@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Airbnb Stays Kenya</title>
-<meta name="description" content="Discover stays across Kenya that fit you instantly. Book and pay with Mpesa.">
+<meta name="description" content="Discover stays across Kenya that fit you instantly. Book by WhatsApp or call.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -205,8 +205,59 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
 .cnt{position:absolute;right:16px;bottom:16px;z-index:5;background:rgba(30,25,22,.72);color:#fff;font-weight:600;font-size:.9rem;padding:.55rem 1rem;border-radius:999px;backdrop-filter:blur(8px)}
 .cap{position:absolute;left:20px;bottom:22px;z-index:5;font-weight:600;text-shadow:0 1px 8px rgba(0,0,0,.7);max-width:60%}
 .dhero{cursor:zoom-in}
+.facts{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+.facts span{background:var(--chip);border:1px solid var(--gl);padding:.35rem .8rem;border-radius:999px;font-size:.85rem;font-weight:500}
+.am{list-style:none;padding:0;margin:.5rem 0 1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem;font-size:.9rem}
+.am li{position:relative;padding-left:1.4rem}
+.am li::before{content:"";position:absolute;left:.25rem;top:.3rem;width:5px;height:10px;border:solid var(--blue);border-width:0 2px 2px 0;transform:rotate(45deg)}
+@media(min-width:900px){
+#dlg.wide{width:min(1000px,94vw)}
+#dlg.wide #v1.on{display:grid;grid-template-columns:1.15fr 1fr}
+#dlg.wide .dhero{height:100%;min-height:560px;border-radius:0}
+#dlg.wide .pad{padding:3.6rem 1.8rem 1.8rem}
+}
+.hp,.hn{top:50%;margin-top:-21px;width:42px;height:42px}.hp{left:14px}.hn{right:14px}
+.hc{top:20px;bottom:auto;right:auto;left:50%;transform:translateX(-50%)}
 .alt .two{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 .or{text-align:center;margin:.9rem 0 .5rem;font-size:.9rem}
+.dhero{border-radius:0;height:clamp(300px,56svh,520px)}
+.dhero .tx,.dhero::after{display:none}
+.thumbs{display:none}
+.hc{top:auto;left:auto;right:16px;bottom:46px;transform:none}
+.sheet{position:relative;margin-top:-28px;background:var(--b1);border-radius:28px 28px 0 0;padding-top:1.5rem}
+.st{text-align:center;font-size:1.6rem;font-weight:700;line-height:1.2;margin:.2rem 0 .3rem}
+.sl2{text-align:center;margin:0 0 1rem}
+.bar{position:sticky;bottom:0;z-index:6;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.9rem 1.3rem calc(.9rem + env(safe-area-inset-bottom,0px));background:var(--b1);border-top:1px solid var(--gl)}
+.bar .bp{display:grid;line-height:1.25}.bar b{font-size:1.3rem;text-decoration:underline}.bar span{font-size:.85rem;color:var(--muted)}
+.bar .btn{width:auto;padding:.9rem 2.4rem;font-size:1.05rem}
+@media (hover:none){.hp,.hn{display:none!important}}
+@media(min-width:900px){#dlg.wide #v1.on{grid-template-rows:1fr auto}#dlg.wide .bar{grid-column:1/-1}#dlg.wide .hc{bottom:16px}#dlg.wide .sheet{margin-top:0;border-radius:0;background:transparent}}
+.trk{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+.trk::-webkit-scrollbar{display:none}
+.trk img{flex:0 0 100%;width:100%;height:100%;object-fit:cover;scroll-snap-align:start;scroll-snap-stop:always;display:block;animation:none;user-select:none}
+.pc{border-radius:30px;padding:10px 10px 14px;cursor:pointer;animation:pop .6s both;transition:transform .3s}
+.pc:hover{transform:translateY(-4px)}
+.pcm{position:relative;aspect-ratio:1/1;border-radius:22px;overflow:hidden;background:var(--chip)}
+.pct{display:flex;height:100%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.pct::-webkit-scrollbar{display:none}
+.sl{flex:0 0 100%;height:100%;scroll-snap-align:start;scroll-snap-stop:always}
+.sl img,.sl svg{width:100%;height:100%;object-fit:cover;display:block;user-select:none}
+.pch{right:10px;top:10px;bottom:auto;width:36px;height:36px;background:transparent;color:#fff;filter:drop-shadow(0 1px 3px rgba(0,0,0,.5));z-index:3}
+.pch .ic{width:26px;height:26px;fill:rgba(0,0,0,.28)}
+.pch.on{color:#E5484D}.pch.on .ic{fill:#E5484D}
+.pca{position:absolute;top:50%;margin-top:-16px;width:32px;height:32px;border-radius:50%;border:0;background:rgba(255,255,255,.94);color:#222;display:grid;place-items:center;cursor:pointer;opacity:0;transition:opacity .2s;box-shadow:0 1px 6px rgba(0,0,0,.3);z-index:3}
+.pca .ic{width:16px;height:16px}.pcp{left:10px}.pcn{right:10px}
+.pcm:hover .pca{opacity:1}
+@media (hover:none){.pca{display:none}}
+.dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:5px;z-index:2;pointer-events:none}
+.dots i{width:6px;height:6px;border-radius:6px;background:rgba(255,255,255,.7);transition:width .25s,background .25s}
+.dots i.on{width:18px;background:#fff}
+.pcb{padding:.7rem .5rem .2rem}
+.pcr{display:flex;justify-content:flex-end;font-weight:600;font-size:.95rem}
+.pcr span{display:inline-flex;align-items:center;gap:.3rem}.pcr svg{width:14px;height:14px}
+.pt{font-size:1.05rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:.1rem}
+.ps{margin:.1rem 0 0;color:var(--muted);font-size:.9rem}
+.pq{margin:.3rem 0 0;font-size:.95rem}.pq b{font-weight:700}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.hero h1 .ln span{transform:none}.hero p.sub,.search{opacity:1}}
 </style>
 </head>
@@ -216,7 +267,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
   <header class="hero">
     <div>
       <h1><span class="ln"><span>Discover stays</span></span><span class="ln"><span>that fit you</span></span><span class="ln"><span>instantly.</span></span></h1>
-      <p class="sub">Handpicked homes from the coast to the highlands. Pick your dates and pay with Mpesa.</p>
+      <p class="sub">Handpicked homes from the coast to the highlands. Pick your dates and book by WhatsApp or call.</p>
       <div class="search"><label class="gl"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input id="q" type="search" placeholder="Search by stay or place" aria-label="Search stays"></label><button class="go" id="go" aria-label="View stays"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14M5 12l7 7 7-7"/></svg></button></div>
     </div>
     <div class="stack" id="stack" aria-hidden="true"></div>
@@ -232,10 +283,6 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
       <p class="meta sub2">Stay, extras and transfers bundled together at one price, so there is nothing left to plan.</p>
       <div class="pk" id="pk"></div>
     </section>
-    <section id="gallery" hidden>
-      <h2 class="sh2">Gallery</h2>
-      <div class="gal" id="gal"></div>
-    </section>
     <div>
     </div>
     <section>
@@ -243,7 +290,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
       <ol class="sl">
         <li class="gl"><h3>Pick a stay</h3><p>Browse by region or search for a place that fits your plans.</p></li>
         <li class="gl"><h3>Choose dates and guests</h3><p>Select your stay on the calendar and see the total in shillings.</p></li>
-        <li class="gl"><h3>Approve on your phone</h3><p>Enter your Mpesa PIN and your booking is confirmed with a PDF receipt.</p></li>
+        <li class="gl"><h3>Confirm with us</h3><p>Send your request by WhatsApp or call, and we confirm availability and how to pay.</p></li>
       </ol>
     </section>
     <section class="ig gl">
@@ -252,7 +299,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
       <a class="btn blue" href="https://www.instagram.com/airbnbstays.ke" target="_blank" rel="noopener">Visit @airbnbstays.ke</a>
     </section>
   </main>
-  <footer><div class="wrap" style="width:100%"><span>Airbnb Stays Kenya</span><span>Payments by Mpesa. Prices in KES.</span></div></footer>
+  <footer><div class="wrap" style="width:100%"><span>Airbnb Stays Kenya</span><span>Prices in KES.</span></div></footer>
 </div>
 
 <a class="wa" id="wa" href="#" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
@@ -271,13 +318,16 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
 
   <div class="step on" id="v1">
     <div class="dhero" id="dhero"></div>
-    <div class="pad">
+    <div class="pad sheet">
+      <h2 class="st" id="st"></h2><p class="meta sl2" id="sloc"></p>
       <div class="thumbs" id="thumbs"></div>
+      <div class="facts" id="facts"></div>
       <h3>Description</h3>
       <p class="desc cl" id="desc"></p>
       <button class="rm" id="rm" type="button">Read more</button>
-      <button class="btn blue" id="next1" type="button">Next</button>
-    </div>
+      <div id="amw"><h3 id="amt">What this place offers</h3><ul class="am" id="am"></ul></div>
+      </div>
+    <div class="bar"><div class="bp"><b id="bprice"></b><span id="bsub"></span></div><button class="btn blue" id="next1" type="button">Reserve</button></div>
   </div>
 
   <div class="step" id="v2"><div class="pad tp">
@@ -298,7 +348,7 @@ label.f input{font:inherit;padding:.8rem 1rem;border-radius:16px;border:1px soli
   <div class="step" id="v3"><div class="pad tp">
     <h3 class="c">Confirm your booking</h3>
     <div class="sum gl" id="psum"></div>
-    <div class="alt"><p class="meta" style="margin:.2rem 0 .6rem;text-align:center">Book by phone</p><div class="two"><a class="btn wab" id="bkwa" href="#" target="_blank" rel="noopener">WhatsApp us</a><a class="btn soft" id="bkcall" href="#">Call us</a></div></div>
+    <div class="alt"><p class="meta" style="margin:.2rem 0 .6rem;text-align:center">Send your booking request</p><div class="two"><a class="btn wab" id="bkwa" href="#" target="_blank" rel="noopener">WhatsApp us</a><a class="btn soft" id="bkcall" href="#">Call us</a></div></div>
     <p class="or meta" id="orp">or pay online with Mpesa</p>
     <form id="f" novalidate>
       <label class="f">Full name<input id="nm" autocomplete="name" required></label>
@@ -341,22 +391,28 @@ function renderStack(){var a=STAYS.filter(function(s){return s.img}),pick=a.conc
 renderStack();
 /* listing grid */
 var grid=$("grid"),cur="All",fav={};
+function badgeText(v){if(v==="none")return"";if(!v||v==="new")return"New";if(v==="favourite")return"Guest favourite";return v}
+function cardHTML(o){
+ var sl=o.imgs.length?o.imgs.slice(0,6).map(function(u,i){return'<img src="'+esc(u)+'?w=600&auto=format" alt="'+esc(o.n)+'"'+(i?' loading="lazy"':'')+' draggable="false">'}):[0,1,2].map(function(v){return scene(o.src,v)});
+ var n=sl.length,d=Math.min(n,5),dots="";for(var i=0;i<d;i++)dots+='<i'+(i?'':' class="on"')+'></i>';
+ return'<div class="pcm"><div class="pct">'+sl.map(function(h){return'<div class="sl">'+h+'</div>'}).join("")+'</div>'
+ +'<button type="button" class="heart pch'+(fav[o.key]?" on":"")+'" data-h="'+esc(o.key)+'" aria-label="Save '+esc(o.n)+'" aria-pressed="'+!!fav[o.key]+'">'+IC.heart+'</button>'
+ +(n>1?'<button type="button" class="pca pcp" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="pca pcn" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><div class="dots">'+dots+'</div>':'')
+ +'</div><div class="pcb">'+(o.badge?'<div class="pcr"><span><svg viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><path d="M12 2l3 7 7.5.6-5.7 5 1.8 7.4L12 18l-6.6 4 1.8-7.4-5.7-5L9 9z"/></svg>'+esc(o.badge)+'</span></div>':'')+'<h3 class="pt">'+esc(o.n)+'</h3><p class="ps">'+esc(o.sub)+'</p><p class="pq"><b>'+esc(o.price)+'</b> '+esc(o.note)+'</p></div>'}
 function render(){var q=$("q").value.trim().toLowerCase();grid.innerHTML="";
  var list=STAYS.filter(function(s){return(cur==="All"||s.r===cur)&&(!q||(s.n+" "+s.l).toLowerCase().indexOf(q)>-1)});
  if(!list.length){grid.innerHTML='<div class="empty gl" style="border-radius:24px">No stays match your search. Try another place or clear the filter.</div>';return}
- list.forEach(function(s,i){var c=document.createElement("div");c.style.position="relative";c.style.animation="pop .6s "+i*80+"ms both";
-  c.innerHTML='<button class="card" style="animation:none;width:100%" data-id="'+s.id+'" aria-label="View '+s.n+'">'+scene(s,0)+'<div class="info"><span class="badge">Recommended</span><h3>'+s.n+'</h3><div class="loc">'+IC.pin+s.l+'</div><div class="pr">KES '+fmt(s.p)+' a night</div></div></button><button class="heart'+(fav[s.id]?" on":"")+'" data-h="'+s.id+'" aria-label="Save '+s.n+'" aria-pressed="'+!!fav[s.id]+'">'+IC.heart+'</button>';
+ list.forEach(function(s,i){var c=document.createElement("article");c.className="pc gl";c.tabIndex=0;c.dataset.kind="s";c.dataset.id=s.id;c.style.animationDelay=i*80+"ms";
+  c.innerHTML=cardHTML({key:"s"+s.id,n:s.n,src:s,imgs:s.imgs||[],badge:badgeText(s.badge),sub:[s.l,"Sleeps "+s.g].filter(Boolean).join(" \u00b7 "),price:"KES "+fmt(s.p),note:"a night"});
   grid.appendChild(c)})}
 $("q").addEventListener("input",render);
 $("go").onclick=function(){$("stays").scrollIntoView({behavior:"smooth"})};
 render();
-grid.addEventListener("click",function(e){var h=e.target.closest("[data-h]");
- if(h){var k=h.dataset.h;fav[k]=!fav[k];h.classList.toggle("on",!!fav[k]);h.setAttribute("aria-pressed",!!fav[k]);return}
- var c=e.target.closest("[data-id]");if(c)openStay(c.dataset.id)});
+
 /* CMS and packages. Add your Sanity projectId below to load live content. */
 var SANITY={projectId:"b0991shp",dataset:"production",apiVersion:"2025-01-01"};
-var Q_STAYS='*[_type=="stay"]|order(order asc){"id":_id,"n":name,"l":location,"r":region,"p":price,"g":maxGuests,"d":description,"img":image.asset->url,"gallery":gallery[].asset->url}';
-var Q_PKGS='*[_type=="package"]|order(order asc){"id":_id,"n":name,"tag":tagline,"nights":nights,"price":price,"g":guests,"feat":featured,"inc":includes,"d":description,"img":image.asset->url,"gallery":gallery[].asset->url,"stay":stay._ref}';
+var Q_STAYS='*[_type=="stay"]|order(order asc){"id":_id,"n":name,"l":location,"r":region,"p":price,"g":maxGuests,"d":description,"img":image.asset->url,"gallery":gallery[].asset->url,"amenities":amenities,"badge":badge}';
+var Q_PKGS='*[_type=="package"]|order(order asc){"id":_id,"n":name,"tag":tagline,"nights":nights,"price":price,"g":guests,"feat":featured,"inc":includes,"d":description,"img":image.asset->url,"gallery":gallery[].asset->url,"stay":stay._ref,"badge":badge}';
 /* Sample packages shown until Sanity is connected. */
 var PACKAGES=[
 {id:"p1",n:"Weekend Escape",tag:"A slow reset in the city",stay:1,nights:2,price:14500,g:2,feat:false,d:"Two easy nights in a garden cottage with everything arranged.",inc:["2 nights at Karen Garden Cottage","Breakfast baskets each morning","Airport pickup","Late checkout"]},
@@ -365,22 +421,31 @@ var PACKAGES=[
 function esc(t){return String(t==null?"":t).replace(/[&<>"]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]})}
 var pk=null;
 function renderPk(){var el=$("pk");el.innerHTML="";PACKAGES.forEach(function(p,i){
- var s=STAYS.filter(function(x){return x.id===p.stay})[0]||STAYS[0],c=document.createElement("article");
- c.className="pkc gl"+(p.feat?" feat":"");c.style.animationDelay=i*90+"ms";
- c.innerHTML='<div class="pki">'+scene(p.img?p:s,i%3+1)+(p.feat?'<span class="badge">Most booked</span>':'')+'</div><div class="pkb"><h3>'+esc(p.n)+'</h3><p class="meta">'+esc(p.tag)+'</p><div class="pkm">'+p.nights+(p.nights===1?' night':' nights')+', up to '+p.g+' guests</div><ul>'+(p.inc||[]).map(function(x){return'<li>'+esc(x)+'</li>'}).join("")+'</ul><div class="pkf"><div><b>KES '+fmt(p.price)+'</b><span class="meta"> per package</span></div><button class="btn blue" data-p="'+esc(p.id)+'" type="button">Book package</button></div></div>';
+ var s=STAYS.filter(function(x){return x.id===p.stay})[0]||STAYS[0],c=document.createElement("article"),imgs=(p.imgs&&p.imgs.length)?p.imgs:(s.imgs||[]);
+ c.className="pc gl";c.tabIndex=0;c.dataset.kind="p";c.dataset.id=p.id;c.style.animationDelay=i*90+"ms";
+ c.innerHTML=cardHTML({key:"p"+p.id,n:p.n,src:s,imgs:imgs,badge:p.feat?"Most booked":badgeText(p.badge),sub:[s.l,"Up to "+p.g+" guests"].filter(Boolean).join(" \u00b7 "),price:"KES "+fmt(p.price),note:"for "+p.nights+(p.nights===1?" night":" nights")});
  el.appendChild(c)})}
-$("pk").addEventListener("click",function(e){var b=e.target.closest("[data-p]");if(!b)return;
- var p=PACKAGES.filter(function(x){return String(x.id)===b.dataset.p})[0],s=STAYS.filter(function(x){return x.id===p.stay})[0]||STAYS[0];openStay(s.id,p)});
+function cardClick(e){
+ var h=e.target.closest("[data-h]");
+ if(h){var k=h.dataset.h;fav[k]=!fav[k];h.classList.toggle("on",!!fav[k]);h.setAttribute("aria-pressed",!!fav[k]);return}
+ var a=e.target.closest(".pca");
+ if(a){var t=a.closest(".pcm").querySelector(".pct");t.scrollBy({left:(a.classList.contains("pcp")?-1:1)*t.clientWidth,behavior:"smooth"});return}
+ var c=e.target.closest(".pc");if(!c)return;
+ if(c.dataset.kind==="p"){var p=PACKAGES.filter(function(x){return String(x.id)===c.dataset.id})[0],st=STAYS.filter(function(x){return x.id===p.stay})[0]||STAYS[0];openStay(st.id,p)}
+ else openStay(c.dataset.id)}
+function cardScroll(e){var t=e.target;if(!t.classList||!t.classList.contains("pct"))return;
+ var n=t.children.length,i=Math.round(t.scrollLeft/(t.clientWidth||1)),d=t.parentNode.querySelectorAll(".dots i"),a=n<=5?i:Math.min(d.length-1,Math.floor(i*d.length/n));
+ [].forEach.call(d,function(x,k){x.classList.toggle("on",k===a)})}
+[grid,$("pk")].forEach(function(el){
+ el.addEventListener("click",cardClick);el.addEventListener("scroll",cardScroll,true);
+ el.addEventListener("keydown",function(e){if(e.key==="Enter"&&e.target.classList.contains("pc"))cardClick(e)})});
 function gq(q){return fetch("https://"+SANITY.projectId+".apicdn.sanity.io/v"+SANITY.apiVersion+"/data/query/"+SANITY.dataset+"?query="+encodeURIComponent(q)).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){return j.result||[]})}
 function loadCMS(){if(!SANITY.projectId)return;
  Promise.all([gq(Q_STAYS),gq(Q_PKGS)]).then(function(a){
-  if(a[0].length)STAYS=a[0].map(function(s){s.c=["#8FD3C7","#F6D58C","#2E6F5E"];s.t="hills";s.g=s.g||2;s.d=s.d||"";s.n=s.n||"Untitled stay";s.l=s.l||"";s.p=s.p||0;s.img=s.img||(s.gallery&&s.gallery[0])||null;s.imgs=[s.img].concat(s.gallery||[]).filter(function(u,i,a){return u&&a.indexOf(u)===i});return s});
+  if(a[0].length)STAYS=a[0].map(function(s){s.c=["#8FD3C7","#F6D58C","#2E6F5E"];s.t="hills";s.g=s.g||2;s.d=s.d||"";s.n=s.n||"Untitled stay";s.l=s.l||"";s.p=s.p||0;s.amenities=s.amenities||[];s.img=s.img||(s.gallery&&s.gallery[0])||null;s.imgs=[s.img].concat(s.gallery||[]).filter(function(u,i,a){return u&&a.indexOf(u)===i});return s});
   if(a[1].length)PACKAGES=a[1].map(function(p){p.inc=p.inc||[];p.g=p.g||2;p.img=p.img||(p.gallery&&p.gallery[0])||null;p.imgs=[p.img].concat(p.gallery||[]).filter(function(u,i,a){return u&&a.indexOf(u)===i});return p});
-  render();renderPk();renderStack();renderGal()}).catch(function(e){console.warn("Sanity load failed",e)})}
-var GAL=[],lbI=0,lb=$("lb");
-function renderGal(){GAL=[];STAYS.concat(PACKAGES).forEach(function(x){(x.imgs||[]).forEach(function(u){GAL.push({u:u,t:x.n})})});
- $("gallery").hidden=!GAL.length;
- $("gal").innerHTML=GAL.slice(0,24).map(function(g,i){return'<button type="button" data-g="'+i+'" aria-label="Open photo of '+esc(g.t)+'"><img src="'+esc(g.u)+'?w=600&auto=format" alt="'+esc(g.t)+'" loading="lazy"></button>'}).join("")}
+  render();renderPk();renderStack()}).catch(function(e){console.warn("Sanity load failed",e)})}
+var lbI=0,lb=$("lb");
 var LB=[],tx0=0;
 function lbOpen(list,i){if(!list.length)return;LB=list;lbShow(i||0);if(!lb.open)lb.showModal()}
 function lbShow(i){lbI=(i+LB.length)%LB.length;var im=$("lbi"),one=LB.length<2;
@@ -389,11 +454,25 @@ function lbShow(i){lbI=(i+LB.length)%LB.length;var im=$("lbi"),one=LB.length<2;
  $("lbc").textContent=LB[lbI].t;$("lbct").textContent=(lbI+1)+" / "+LB.length;
  $("lbp").style.display=$("lbn").style.display=one?"none":"";
  if(!one){new Image().src=LB[(lbI+1)%LB.length].u+"?w=1400&auto=format"}}
-$("gal").addEventListener("click",function(e){var b=e.target.closest("[data-g]");if(b)lbOpen(GAL,+b.dataset.g)});
-$("dhero").addEventListener("click",function(){
- var im=pk&&pk.imgs&&pk.imgs.length?pk.imgs:((stay&&stay.imgs)||[]),cur=$("dm").querySelector("img"),idx=0;
- if(cur){idx=Math.max(0,im.indexOf(cur.getAttribute("src").split("?")[0]))}
- var t=pk?pk.n:stay.n;lbOpen(im.map(function(u){return{u:u,t:t}}),idx)});
+var him=[],hi=0,raf=0;
+function heroInit(){var m=him.length>1;
+ [].forEach.call($("dhero").querySelectorAll(".hp,.hn,.hc"),function(x){x.style.display=m?"":"none"});
+ if(!him.length)return;
+ $("dm").innerHTML='<div class="trk" id="trk">'+him.map(function(u,i){return'<img src="'+esc(u)+'?w=1000&auto=format" alt=""'+(i?' loading="lazy"':'')+' draggable="false">'}).join("")+'</div>';
+ if(m)$("hc").textContent="1 / "+him.length;
+ var t=$("trk");
+ t.addEventListener("scroll",function(){if(raf)return;raf=requestAnimationFrame(function(){raf=0;
+  var i=Math.round(t.scrollLeft/(t.clientWidth||1));
+  if(i!==hi&&i>=0&&i<him.length){hi=i;$("hc").textContent=(hi+1)+" / "+him.length;
+   [].forEach.call($("thumbs").children,function(x,k){x.classList.toggle("on",k===hi)})}})},{passive:true})}
+function heroSet(i,now){if(!him.length)return;var t=$("trk");hi=(i+him.length)%him.length;
+ $("hc").textContent=(hi+1)+" / "+him.length;
+ if(t)t.scrollTo({left:hi*t.clientWidth,behavior:now?"auto":"smooth"});
+ [].forEach.call($("thumbs").children,function(x,k){x.classList.toggle("on",k===hi)})}
+$("dhero").addEventListener("click",function(e){var b=e.target.closest("button");
+ if(b){heroSet(hi+(b.classList.contains("hp")?-1:1));return}
+ if(!him.length)return;var t=pk?pk.n:stay.n;lbOpen(him.map(function(u){return{u:u,t:t}}),hi)});
+lb.addEventListener("close",function(){if(him.length>1)heroSet(lbI,true)});
 $("lbx").onclick=function(){lb.close()};$("lbp").onclick=function(){lbShow(lbI-1)};$("lbn").onclick=function(){lbShow(lbI+1)};
 $("lbs").onclick=function(){var t=LB[lbI].t,u=location.href.split("#")[0];
  if(navigator.share){navigator.share({title:t,text:t+" on Airbnb Stays Kenya",url:u}).catch(function(){})}
@@ -402,21 +481,27 @@ lb.addEventListener("click",function(e){if(e.target===lb)lb.close()});
 lb.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")lbShow(lbI-1);if(e.key==="ArrowRight")lbShow(lbI+1)});
 lb.addEventListener("touchstart",function(e){tx0=e.changedTouches[0].clientX},{passive:true});
 lb.addEventListener("touchend",function(e){var d=e.changedTouches[0].clientX-tx0;if(Math.abs(d)>50&&LB.length>1)lbShow(lbI+(d<0?1:-1))},{passive:true});
-renderPk();renderGal();loadCMS();
+renderPk();loadCMS();
 /* booking flow */
 var dlg=$("dlg"),stay,cin="",cout="",gs=2,tm="12:00 PM",vm,today,nts=0,total=0,step=1,last=null;
 function key(y,m,d){return y+"-"+("0"+(m+1)).slice(-2)+"-"+("0"+d).slice(-2)}
 function dfmt(v){return new Date(v).toLocaleDateString("en-KE",{day:"numeric",month:"short",year:"numeric",timeZone:"UTC"})}
-function go(n){step=n;for(var i=1;i<=5;i++)$("v"+i).classList.toggle("on",i===n);$("back").hidden=!(n===2||n===3);dlg.scrollTop=0}
+function go(n){step=n;for(var i=1;i<=5;i++)$("v"+i).classList.toggle("on",i===n);$("back").hidden=!(n===2||n===3);dlg.classList.toggle("wide",n===1);dlg.scrollTop=0}
 function pills(el,arr,sel,fn){el.innerHTML="";arr.forEach(function(v){var b=document.createElement("button");b.type="button";b.textContent=v;b.setAttribute("aria-pressed",String(v)===String(sel));b.onclick=function(){fn(v);pills(el,arr,v,fn)};el.appendChild(b)})}
 function openStay(id,p){pk=p||null;stay=STAYS.filter(function(s){return String(s.id)===String(id)})[0];cin=cout="";gs=Math.min(2,pk?pk.g:stay.g);tm="12:00 PM";
  var t=new Date();today=key(t.getFullYear(),t.getMonth(),t.getDate());vm=new Date(t.getFullYear(),t.getMonth(),1);
- $("dhero").innerHTML='<div class="dm" id="dm">'+scene(pk&&pk.img?pk:stay,0)+'</div><div class="tx"><div class="loc">'+IC.pin+stay.l+'</div><h2>'+(pk?pk.n:stay.n)+'</h2><div class="pp"><span>'+(pk?'Package price':'Price per night')+'</span><b>KES '+fmt(pk?pk.price:stay.p)+'</b></div></div>';
- var im=pk&&pk.imgs&&pk.imgs.length?pk.imgs:(stay.imgs||[]);$("thumbs").innerHTML=im.length?(im.length>1?im.map(function(u,i){return'<button type="button" class="th'+(i?'':' on')+'" data-u="'+esc(u)+'" aria-label="Photo '+(i+1)+' of '+im.length+'"><img src="'+esc(u)+'?w=300&auto=format" alt="" loading="lazy"></button>'}).join(""):""):[1,2,3,4].map(function(v){return'<div>'+scene(stay,v)+'</div>'}).join("");
- if(pk)stay=Object.assign({},stay,{n:pk.n+" at "+stay.n});$("desc").textContent=pk?(pk.d||"")+" Includes: "+pk.inc.join(", ")+".":stay.d;$("desc").classList.add("cl");$("rm").textContent="Read more";$("rm").hidden=false;
+ $("dhero").innerHTML='<div class="dm" id="dm">'+scene(pk&&pk.img?pk:stay,0)+'</div><button type="button" class="ib lbb hp" aria-label="Previous photo"><svg class="ic" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><button type="button" class="ib lbb hn" aria-label="Next photo"><svg class="ic" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></button><span class="cnt hc" id="hc"></span><div class="tx"><div class="loc">'+IC.pin+stay.l+'</div><h2>'+(pk?pk.n:stay.n)+'</h2><div class="pp"><span>'+(pk?'Package price':'Price per night')+'</span><b>KES '+fmt(pk?pk.price:stay.p)+'</b></div></div>';
+ var im=pk&&pk.imgs&&pk.imgs.length?pk.imgs:(stay.imgs||[]);him=im.slice();hi=0;$("thumbs").innerHTML=im.length?(im.length>1?im.map(function(u,i){return'<button type="button" class="th'+(i?'':' on')+'" data-u="'+esc(u)+'" aria-label="Photo '+(i+1)+' of '+im.length+'"><img src="'+esc(u)+'?w=300&auto=format" alt="" loading="lazy"></button>'}).join(""):""):[1,2,3,4].map(function(v){return'<div>'+scene(stay,v)+'</div>'}).join("");
+ heroInit();if(pk)stay=Object.assign({},stay,{n:pk.n+" at "+stay.n});$("desc").textContent=pk?(pk.d||""):stay.d;
+ var gm=pk?pk.g:stay.g,fl=["Sleeps "+gm+(gm===1?" guest":" guests"),pk?pk.nights+(pk.nights===1?" night":" nights"):"KES "+fmt(stay.p)+" a night"];
+ $("st").textContent=pk?pk.n:stay.n;$("sloc").textContent=stay.l||"";
+ $("bprice").textContent="KES "+fmt(pk?pk.price:stay.p);$("bsub").textContent=pk?"for "+pk.nights+(pk.nights===1?" night":" nights"):"a night";
+ $("facts").innerHTML=fl.filter(Boolean).map(function(x){return'<span>'+esc(x)+'</span>'}).join("");
+ var al=pk?(pk.inc||[]):(stay.amenities||[]);$("amw").style.display=al.length?"":"none";$("amt").textContent=pk?"What is included":"What this place offers";
+ $("am").innerHTML=al.map(function(x){return'<li>'+esc(x)+'</li>'}).join("");$("desc").classList.add("cl");$("rm").textContent="Read more";$("rm").hidden=false;
  $("rate").textContent=pk?"Package, "+pk.nights+(pk.nights===1?" night":" nights"):"KES "+fmt(stay.p)+" a night";
  var gl=[],mg=pk?pk.g:stay.g;for(var i=1;i<=mg;i++)gl.push(i);
- pills($("times"),["12:00 PM","2:00 PM","4:00 PM"],tm,function(v){tm=v});
+ pills($("times"),["11:00 AM","12:00 PM","2:00 PM","4:00 PM"],tm,function(v){tm=v});
  pills($("guests"),gl,gs,function(v){gs=v});
  $("err").textContent="";$("pay").disabled=false;upd();go(1);dlg.showModal()}
 $("rm").onclick=function(){var d=$("desc").classList.toggle("cl");$("rm").textContent=d?"Read more":"Show less"};
@@ -432,9 +517,7 @@ $("days").addEventListener("click",function(e){var b=e.target.closest("button[da
  if(pk){cin=k;var z=new Date(k);z.setUTCDate(z.getUTCDate()+pk.nights);cout=z.toISOString().slice(0,10)}else if(!cin||cout||k<=cin){cin=k;cout=""}else cout=k;upd()});
 $("pm").onclick=function(){vm=new Date(vm.getFullYear(),vm.getMonth()-1,1);upd()};
 $("mn").onclick=function(){vm=new Date(vm.getFullYear(),vm.getMonth()+1,1);upd()};
-$("thumbs").addEventListener("click",function(e){var b=e.target.closest("button[data-u]");if(!b)return;
- [].forEach.call($("thumbs").children,function(x){x.classList.remove("on")});b.classList.add("on");
- $("dm").innerHTML='<img src="'+b.dataset.u+'?w=1000&auto=format" alt="">'});
+$("thumbs").addEventListener("click",function(e){var b=e.target.closest("button[data-u]");if(!b)return;heroSet([].indexOf.call($("thumbs").children,b))});
 $("next1").onclick=function(){go(2)};
 $("next2").onclick=function(){
  $("psum").innerHTML='<div class="r"><span>Stay</span><b>'+stay.n+'</b></div><div class="r"><span>Dates</span><span>'+dfmt(cin)+' to '+dfmt(cout)+'</span></div><div class="r"><span>Check in time</span><span>'+tm+'</span></div><div class="r"><span>Guests</span><span>'+gs+'</span></div><div class="r tt"><span>Total</span><span>KES '+fmt(total)+'</span></div>';contactLinks();go(3)};
@@ -476,7 +559,7 @@ $("f").addEventListener("submit",function(e){e.preventDefault();
   else{go(3);$("pay").disabled=false;err.textContent=(r&&r.error)||"Payment was not completed. Check your number and try again."}})
  .catch(function(){go(3);$("pay").disabled=false;err.textContent="We could not reach Mpesa. Try again in a moment."})});
 /* Set ONLINE_PAYMENT to false to hide online payment and take bookings by call or WhatsApp only. */
-var ONLINE_PAYMENT=true;
+var ONLINE_PAYMENT=false;
 function contactLinks(){
  var m="Hello Airbnb Stays Kenya, I would like to book "+stay.n+" from "+dfmt(cin)+" to "+dfmt(cout)+" ("+nts+(nts===1?" night":" nights")+", "+gs+(gs===1?" guest":" guests")+", check in "+tm+"). Total KES "+fmt(total)+". Please confirm availability.";
  $("bkwa").href="https://wa.me/"+WA_BUSINESS+"?text="+encodeURIComponent(m);
